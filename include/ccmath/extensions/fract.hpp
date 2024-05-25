@@ -8,7 +8,7 @@
 
 #pragma once
 
-#include "ccmath/math/nearest/floor.hpp"
+#include "ccmath/internal/support/directional_round.hpp"
 #include <type_traits>
 
 namespace ccm::ext
@@ -16,6 +16,6 @@ namespace ccm::ext
     template <typename T, std::enable_if_t<std::is_floating_point_v<T>, bool> = true>
     constexpr T fract(T x) noexcept
 	{
-        return x - ccm::floor(x);
+        return x - ccm::support::toward_zero(x);
 	}
 } // namespace ccm
